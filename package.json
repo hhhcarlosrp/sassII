@@ -1,0 +1,22 @@
+{
+  "name": "veterinaria",
+  "version": "1.0.0",
+  "description": "Veterinaria Patas y Patas V-1",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-sass --include-path sass ./sass/index.scss ./css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hhhcarlosrp/EntregableSASSI.git"
+  },
+  "author": "Carlos Alberto Rodriguez Palacios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hhhcarlosrp/EntregableSASSI/issues"
+  },
+  "homepage": "https://github.com/hhhcarlosrp/EntregableSASSI#readme",
+  "devDependencies": {
+    "node-sass": "^7.0.1"
+  }
+}

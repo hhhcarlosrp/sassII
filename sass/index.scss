@@ -1,0 +1,137 @@
+@import 'variables';
+@import 'global';
+@import 'header';
+
+  // selector anidado 
+  h1 {
+      color: $colorPrincipal;
+      p {
+        color: $colorNaranja;
+      }
+    }
+ 
+  
+  // EXTENDS
+  .btn-base {
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    ////font-size: $fontMedium;
+    color: white;
+    font-family: Arial;
+    font-weight: bold;
+    ////transition: $transicion;
+  
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  
+  .btn-perros {
+    @extend .btn-base;
+    background-color: #198754;
+  }
+
+  .btn-gatos {
+    @extend .btn-base;
+    background-color: #333;
+  }
+
+  .btn-servicios {
+    @extend .btn-base;
+    background-color: $colorNaranja;
+  }
+
+  // MIXINS
+  @mixin encabezados($tamano, $color) {
+    h1 {
+      font-size: $tamano;    
+    }
+    h2 {
+      font-size: $tamano - 10;
+    }
+    h3 {
+      font-size: $tamano - 20;
+    }
+
+    // condicional
+    @if ($color == 'bl') {
+      color: #fff;
+    } @else if ($color == 'or') {
+      color: orange
+    } @else {
+      color: #198754
+    }
+
+  }
+
+  .card-11 {
+    @include encabezados(60em, 'bl');
+    font-size:  10em;
+  }
+  
+  .card-12 {
+    @include encabezados(40em, 'or');
+  }
+
+  .card-13 {
+    @include encabezados(40em, '');
+  }
+
+  @mixin card-base($alineacion, $fondo, $ancho) {
+    border-radius: 10px;
+    border: 2px solid #333;
+    margin-top: 30px;
+    display: flex;
+    justify-content: $alineacion;
+    background-color: $fondo;
+  
+    // condicional
+    @if ($ancho == 'sm') {
+      max-width: 50%;
+    } @else if ($ancho == 'md') {
+      max-width: 75%;
+    } @else {
+      max-width: 100%;
+    }
+  }
+  
+  .card-1 {
+    @include card-base(space-between, yellow, 'sm');
+    font-weight: bold;
+  }
+  
+  .card-2 {
+    @include card-base(space-around, cyan, 'md');
+    font-style: italic
+  }
+  
+  .card-3 {
+    @include card-base(space-evenly, salmon, '');
+  }
+  
+  footer {
+    margin-top: 50px;
+  }
+  
+  // MAPS & BUCLE EACH
+  $redesSociales: (
+    // llave: valor
+    github: #1d1d1d,
+    twitter: #55acee,
+    instagram: #c92d8f,
+    facebook: #2279e4,
+  );
+  
+  // bucle each
+  @each $nombre, $color in $redesSociales {
+    // .link-github
+    .link-#{$nombre} {
+      margin: 0 5px;
+      padding: 10px;
+      border-radius: 10px;
+      color: white;
+      text-decoration: none;
+      background-color: $color;
+    }
+  }
